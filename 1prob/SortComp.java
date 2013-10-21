@@ -1,12 +1,12 @@
-package Prog1;
 /**
 @Authors: 
 Alex Clavelle
 Kelsey Cameron
 
 */
-Class SortCompare{
+class SortComp{
 	public static void main(String[] args){
+	System.out.println("hey");
 		
 	}
 }
