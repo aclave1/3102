@@ -26,7 +26,7 @@ class SortComp{
 				lines.add(line);
 				System.out.println(line);
 			}
-		}
+		asdasdasdafghfdyutdyuti
 		catch (IOException x){
 			System.err.format("IOException: %s%n",x);
 		}
