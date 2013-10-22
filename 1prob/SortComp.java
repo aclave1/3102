@@ -3,33 +3,44 @@
 Alex Clavelle
 Kelsey Cameron
 
-*/
-import java.util.LinkedList;
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.*;
-class SortComp{
-	public static void main(String[] args){
-		Path path = Paths.get(args[0]);
-		LinkedList file = parseFile(path);		
+ */
 
-		
-	}
+import java.util.Arrays;
+import java.util.Random;
 
-	public static LinkedList<String> parseFile(Path path){
-		LinkedList<String> lines = new LinkedList<String>();
-		Charset charset = Charset.forName("US-ASCII");
-		try(BufferedReader reader = Files.newBufferedReader(path,charset)){
-			String line = null;
-			while((line = reader.readLine()) != null){
-				lines.add(line);
-				System.out.println(line);
+@SuppressWarnings("unused")
+public class SortComp {
+
+	public static void main(String[] args) {
+
+		Random rand = new Random();
+		System.out.println("Average times for quicksort:");
+		//increase input array size
+		for(int size = 10000; size < 10000001;size*=10){
+			//run it multiple times and average the time
+			double average = 0;
+			for(int i = 1; i <= 10; i++){
+				int[] unsorted = new int[size];
+				//fill
+				for(int j = 0;j<unsorted.length-1;j++){
+					unsorted[j] = rand.nextInt();
+				}
+				double start,end;
+				start = System.nanoTime();
+				Arrays.sort(unsorted);
+				end = System.nanoTime();
+				average += (end - start);
+						
 			}
-		asdasdasdafghfdyutdyuti
-		catch (IOException x){
-			System.err.format("IOException: %s%n",x);
+			average /=11.0;
+			
+			System.out.printf("length: \n%d \ntime elapsed:%f\n",size,average);
+			
+			
 		}
-		return lines;
+		
+		
+		
+		
 	}
 }
