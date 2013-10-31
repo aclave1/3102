@@ -5,21 +5,19 @@ Description: Creates a K-ary heap where K is the maximum number of children for 
 import java.util.*;
 import java.io.*;
 
-public class KAry {
-	List<String> input;
-
+public class HWUtil {
+	List<String> input;	
 	public static void main(String[] args) {
 		String filepath = args[0];
-		KAry k = new KAry();
+		HWUtil inp = new HWUtil();
 		
-		k.loadfile(filepath);
-		for(String s : k.input){
+		inp.loadfile(filepath);
+		for(String s : inp.input){
 			System.out.println(s);
 			
 		}
 
 	}
-
 	public boolean loadfile(String path) {
 		input = new ArrayList<String>();
 		Scanner filescn;
@@ -36,11 +34,12 @@ public class KAry {
 			System.out.println(e);
 		}
 		if (input.size() == count) {
-			System.out.println("File successfully loaded");
+			System.out.println("File successfully loaded " + count );
 			return true;
 		} else
 			System.out.println("File load unsuccessfull. ");
 			return false;
 	}
-
+	
+	
 }
