@@ -2,27 +2,45 @@
 	@authors: Alex Clavelle, Kelsey Cameron
 Description: Creates a K-ary heap where K is the maximum number of children for a non-leaf node.
  */
-import java.io.BufferedReader;
 import java.util.*;
 import java.io.*;
-import java.io.IOException;
-public class KAry{
-				public static void main(String[] args){
-								//read each operation from the file into a map.
-								Map <String, Integer> ops = new HashMap<String, Integer>();
-								//new stuff with scanner
-								BufferedReader buffer=new BufferedReader(new InputStreamReader(System.in));
-								try{
-												Scanner input = new Scanner(new File("in.txt"));
-												String splitMe = input.nextLine();
-												String[] split = splitMe.split(" ");
-												ops.put(split[0],Integer.parseInt(split[1]));
-												System.out.println(ops.get("word1"));	
 
-								}
-								catch(Exception e){
-												System.out.println(e);
-												System.exit(1);
-								}
-				}
+public class KAry {
+	List<String> input;
+
+	public static void main(String[] args) {
+		String filepath = args[0];
+		KAry k = new KAry();
+		
+		k.loadfile(filepath);
+		for(String s : k.input){
+			System.out.println(s);
+			
+		}
+
+	}
+
+	public boolean loadfile(String path) {
+		input = new ArrayList<String>();
+		Scanner filescn;
+		int count = 0;
+		try {
+			filescn = new Scanner(new File(path));
+			while (filescn.hasNextLine()) {
+				String line = filescn.nextLine();
+				input.add(line);
+				count++;
+			}
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		if (input.size() == count) {
+			System.out.println("File successfully loaded");
+			return true;
+		} else
+			System.out.println("File load unsuccessfull. ");
+			return false;
+	}
+
 }
