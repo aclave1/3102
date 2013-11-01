@@ -9,14 +9,11 @@ public class HWUtil {
 	List<String> input;	
 	public static void main(String[] args) {
 		String filepath = args[0];
-		HWUtil inp = new HWUtil();
-		
+		HWUtil inp = new HWUtil();	
 		inp.loadfile(filepath);
 		for(String s : inp.input){
 			System.out.println(s);
-			
 		}
-
 	}
 	public boolean loadfile(String path) {
 		input = new ArrayList<String>();
@@ -40,6 +37,4 @@ public class HWUtil {
 			System.out.println("File load unsuccessfull. ");
 			return false;
 	}
-	
-	
 }
