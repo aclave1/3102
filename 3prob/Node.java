@@ -5,7 +5,8 @@ public class Node {
 	Node left;
 	Node right;
 	Node parent;
-	
+	boolean heightInc;
+		
 	public Node(int k){
 		key = k;
 	}
@@ -50,7 +51,6 @@ public class Node {
 			}
 			else{
 				x.left = z;
-				z.parent = x;
 			}
 		}
 		else if(x.key < z.key){
@@ -59,9 +59,49 @@ public class Node {
 			}
 			else{
 				x.right = z;
-				z.parent = x;
+				z.bf =0;
+				heightInc = true;
+			}
+			if(heightInc == true){
+				//case 2.1
+				if(x.bf == 0){
+					x.bf = -1;
+				}
+				//case 2.2
+				else if(x.bf == 1){
+					x.bf =0;
+					heightInc = false;
+				}
+				//case 2.3
+				else{
+					//2.3.1
+					if(x.right.bf == -1){
+						leftRotate(x);
+						x.bf = x.parent.bf = 0;
+						heightInc = false;
+					}
+					//2.3.2
+					else if(x.right.bf == 1){
+						int b = x.right.left.bf;
+						lrRotate(x);
+						x.parent.bf = 0;
+						if(b==0){
+							x.bf = x.parent.right.bf = 0;
+						}
+						else if(b==1){
+							x.bf = 0;
+							x.parent.right.bf = -1;
+						}
+						else if(b==-1){
+							x.bf = 1;
+							x.parent.right.bf =0;
+							heightInc = false;
+						}
+					}					
+				}
 			}
 		}
+		
 	}
 	
 	public void transplant(Node x, Node y){
