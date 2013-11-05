@@ -51,6 +51,46 @@ public class Node {
 			}
 			else{
 				x.left = z;
+				z.bf = 0;
+				heightInc = true;
+			}
+			if(heightInc == true){
+				//case 2.1
+				if(x.bf == 0){
+					x.bf = -1;
+				}
+				//case 2.2
+				else if(x.bf == 1){
+					x.bf =0;
+					heightInc = false;
+				}
+				//case 2.3
+				else{
+					//2.3.1
+					if(x.left.bf == -1){
+						rightRotate(x);
+						x.bf = x.parent.bf = 0;
+						heightInc = false;
+					}
+					//2.3.2
+					else if(x.left.bf == 1){
+						int b = x.left.right.bf;
+						rlRotate(x);
+						x.parent.bf = 0;
+						if(b==0){
+							x.bf = x.parent.left.bf = 0;
+						}
+						else if(b==1){
+							x.bf = 0;
+							x.parent.left.bf = -1;
+						}
+						else if(b==-1){
+							x.bf = 1;
+							x.parent.left.bf =0;
+							heightInc = false;
+						}
+					}					
+				}
 			}
 		}
 		else if(x.key < z.key){
@@ -154,8 +194,8 @@ public class Node {
 	
 	public static void main(String[] args){
 		Node tree = new Node(3);
-		tree.insert(4);
-		tree.insert(5);
+		tree.insert(2);
+		tree.insert(1);
 	}
 }
 
