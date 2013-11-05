@@ -14,7 +14,7 @@ public class RadixSort {
 		rad.sorted = new int[rad.unsorted.length];
 		
 		for (int i = 0; i < rad.unsorted.length; i++) {
-			rad.unsorted[i] = Math.abs(rand.nextInt(101));
+			rad.unsorted[i] = Math.abs(rand.nextInt(10000));
 		}
 		rad.unsorted[rad.unsorted.length-1] = 100;
 

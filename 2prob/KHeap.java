@@ -10,10 +10,10 @@ public class KHeap {
 		heap = new Node[100];
 		end = 0;
 	}
-
-	public Node getChild(Node p, int num) {
-		if (num < k && num >= 0) {
-			return heap[k * p.pos + num];
+	//gets p's n'th child.  
+	public Node getChild(Node p, int n) {
+		if (n < k && n >= 0) {
+			return heap[k * p.pos + n];
 		} else
 			return null;
 	}
@@ -27,11 +27,12 @@ public class KHeap {
 	}
 
 	public Node minChild(Node p) {
-		int min = 100000;
+		int min = p.key;
 		int minPos = 0;
 		for (int i = p.pos + 1; i <= (k * p.pos) + k; i++) {
 			if (heap[i] != null) {
 				if (heap[i].key < min) {
+					min = heap[i].key;
 					minPos = i;
 				}
 			}
@@ -40,11 +41,6 @@ public class KHeap {
 	}
 
 	public void insert(int v) {
-		if (size() == 0) {
-			heap[0] = new Node(v);
-			end++;
-			return;
-		}
 		if (size() == heap.length) {
 			resize();
 		}
@@ -53,8 +49,8 @@ public class KHeap {
 		heap[hole] = q;
 		q.pos = hole;
 		q.parPos = parentPos(q);
-		while (q.key < heap[q.parPos].key) {
-			swap(q, heap[q.parPos]);
+		while (q.key < heap[parentPos(q)].key) {
+			swap(q, heap[parentPos(q)]);
 		}
 		end++;
 
@@ -76,6 +72,14 @@ public class KHeap {
 		return end;
 	}
 
+	public void trickleDown(int i){
+		int tmp = i;
+		while(minChild(heap[i]).key < heap[i].key){
+			tmp = minChild(heap[tmp]).pos;
+			swap(heap[tmp],minChild(heap[tmp]));
+		}
+	}
+	
 	public Node extractMin() {
 		Node min = heap[0];
 		heap[0] = heap[end - 1];
@@ -83,13 +87,7 @@ public class KHeap {
 		heap[0].parPos = 0;
 		heap[end - 1] = null;
 		end--;
-		Node newMin = heap[0];
-		while (newMin.key > minChild(newMin).key) {
-			Node oldMin = newMin;
-			newMin = minChild(newMin);
-			swap(newMin, minChild(oldMin));
-		}
+		trickleDown(0);
 		return min;
 	}
-
 }
