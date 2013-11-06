@@ -9,7 +9,6 @@ public class HWUtil {
 	List<String> input;
 
 	public static void main(String[] args) {
-		//SUPPLY A FILEPATH TO THE INPUT ON THE COMMAND LINE!!!!!
 		String filepath = args[0];
 		HWUtil inp = new HWUtil();
 		inp.loadfile(filepath);

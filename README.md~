@@ -1,6 +1,3 @@
-Here are the suggested instructions for compiling and running the programs from the command line. 
-
-
 For problem 1:
 javac RadixSort.java SortComp.java 
 java SortComp

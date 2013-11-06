@@ -1,0 +1,28 @@
+CSC3102: Fall 2013 Advanced Data Structures and Algorithms Analysis Programming Homework 1 Due: October 24, 2013 1. (30 points) Objective of this homework is to compare two different sorting methods. One is comparison based sorting (you can pick either quicksort or mergesort for this) and another is radix sorting. For quicksort, 'qsort' function of 'stdlib.h' can be used. For both sorting, make a plot of input size and runtime. Input values will be positive integers of maximum size 65535 (you can use short int in C). For radixsort, use two rounds of bucketsort with number of buckets 256. For plotting the performance, take input sizes of 103, 104, 105, 106. You can generate random numbers for the input. 2. (40 points) A k-ary heap is like a binary heap (where k = 2), but (with one possible exception) non-leaf nodes have k children instead of 2 children. Implement k-ary heap as a min-priority queue for an arbitrary k = 2 to support following operations:
+
+insert (x): inserts the element x to the heap.
+extract-min(): removes and returns the element of heap with the smallest key. k-ary heap is to be implemented using an array of predefned size. Also study the relative efficiencies of the data structure for varying values of k, by measuring the time required for performing sequence of operations given the input file for k = 2, 4, 6, 8,
+In the input file "IN" stands for insert and "EX" stand for extract-min operation.
+(60 points) An AVL tree is a binary tree that is height balanced: for each node x, the heights of the left and right subtrees of x differ by at most 1. Implement an AVL tree to support following operations.
+insert(x): inserts an element x to the tree.
+min(): returns the element with the smallest key.
+max(): returns the element with the largest key.
+inorder-traversal(): to traverse a non-empty binary tree in inorder, perform the following operations recursively at each node: (1) traverse the left subtree. (2) Visit the root (print the key for the element at root). (3) traverse the right subtree
+search(x): returns TRUE if a node containing element x is found in a binary tree else returns FALSE. 1
+successor(x): returns successor of element x i.e. element with the smallest key greater than that of element x.
+predecessor(x): returns predecessor of element x i.e. element with the largest key smaller than that of element x. Augment the AVL tree to support following order-statistics operations.
+select(i): returns the element containing ith smallest key in a binary tree.
+rank(x): returns the rank/position of element x in the liner order determined by inorder traversal of tree. Conduct the timing experiments for the sequence of operations listed in the given input files. Each line in the input file is one the following commands:
+IN: insert
+MI: min
+MA: max
+TR: inorder-traversal
+SR: search
+SC: successor
+PR: predecessor
+SE: select
+RA: rank Note:
+This programming homework is to be done in pairs (groups of 2 students). Either C, C++ or java can be used as a programming language. (If you choose C++ as a programming language, you can download files timer.h and timer.cpp, which are useful for timing experiments.)
+For both the question, element x contains only key with no satellite information and keys can be assumed to be distinct.
+Executing the program for a particular input file should generate output file containing result of each operation (except insert) line by line. Please look at the sample output file (contains comments after symbol \n n" which are only for understanding purpose and need not be part of actual output file). Last line in the output file should give time required to execute the complete sequence of operations with appropriate time unit. 2
+Input files attached are sample input files only. Final input files to run your program against will be posted later.

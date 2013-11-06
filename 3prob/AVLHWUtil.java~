@@ -7,9 +7,8 @@ import java.io.*;
 
 public class AVLHWUtil {
 	List<String> input;
-	
+
 	public static void main(String[] args) {
-		//SUPPLY A FILEPATH TO THE INPUT FILE FROM THE COMMAND LINE!!!!!!!
 		String filepath = args[0];
 		AVLHWUtil inp = new AVLHWUtil();
 		inp.loadfile(filepath);

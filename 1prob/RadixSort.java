@@ -1,6 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Random;
-
+@SuppressWarnings("unchecked")
 public class RadixSort {
 
 	public int[] sort(int[] us, int base) {
