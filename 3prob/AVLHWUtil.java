@@ -13,10 +13,13 @@ public class AVLHWUtil {
 		AVLHWUtil inp = new AVLHWUtil();
 		inp.loadfile(filepath);
 		AVLTree avl = new AVLTree();
+		double startTime = System.nanoTime();
 		for (String s : inp.input) {
 			inp.opRunner(s, avl);
 		}
-
+		double endTime = System.nanoTime();
+		double elapsed = endTime - startTime;
+		System.out.println(elapsed/1000.0 + "micro-sec");
 	}
 
 	public boolean loadfile(String path) {
@@ -49,18 +52,15 @@ public class AVLHWUtil {
 		}
 		if(op[0].compareTo("MI") == 0){
 			Node i = avl.min(avl.root);
-			System.out.println("Min: " + i.key);
+			System.out.println(i.key);
 		}
 		if (op[0].compareTo("MA") == 0) {
 			Node i = avl.max(avl.root);
-			System.out.println("Max: " + i.key);
+			System.out.println(i.key);
 		}
 		if (op[0].compareTo("TR") == 0) {
 			avl.inorder(avl.root);
-			//36
-			int i = avl.size(avl.root);
 			System.out.println();
-			System.out.println(i);
 		}
 		if (op[0].compareTo("SR") == 0) {
 			int i = Integer.parseInt(op[1]);
@@ -76,7 +76,7 @@ public class AVLHWUtil {
 			int i = Integer.parseInt(op[1]);
 			Node p = avl.searchKey(i, avl.root);
 			Node pred = avl.predecessor(p);
-			System.out.println("Predecessor of " + i + " = " + pred);
+			System.out.println("Predecessor of " + i + " = " + pred.key);
 		}
 		if (op[0].compareTo("SE") == 0) {
 			int i = Integer.parseInt(op[1]);

@@ -11,11 +11,9 @@ public class Node {
 	int key;
 	int val;
 
-	public Node( int num) {
+	public Node(int num) {
 		key = num;
 	}
-
-	
 
 	@Override
 	public String toString() {

@@ -3,35 +3,9 @@ import java.util.Random;
 
 public class RadixSort {
 
-	public int numBuckets = 10;
-	public int[] unsorted;
-	public int[] sorted;
-
-	public static void main(String[] args) {
-		Random rand = new Random();
-		RadixSort rad = new RadixSort();
-		rad.unsorted = new int[10];
-		rad.sorted = new int[rad.unsorted.length];
-		
-		for (int i = 0; i < rad.unsorted.length; i++) {
-			rad.unsorted[i] = Math.abs(rand.nextInt(10000));
-		}
-		rad.unsorted[rad.unsorted.length-1] = 100;
-
-		rad.sorted = rad.sort(rad.unsorted, 10);
-		for (int i = 0; i < rad.unsorted.length - 1; i++) {
-			System.out.print(rad.unsorted[i] + ",");
-		}
-		System.out.println();
-		for (int i = 0; i < rad.sorted.length - 1; i++) {
-			System.out.print(rad.sorted[i] + ",");
-		}
-	}
-
 	public int[] sort(int[] us, int base) {
-
-		ArrayDeque<Integer>[] buckets = new ArrayDeque[10];
-		for (int i = 0; i < 10; i++) {
+		ArrayDeque<Integer>[] buckets = new ArrayDeque[base];
+		for (int i = 0; i < base; i++) {
 			buckets[i] = new ArrayDeque<Integer>();
 		}
 		int max = 0;
@@ -49,7 +23,7 @@ public class RadixSort {
 		for (int j = 0; j < digits; j++) {
 			for (int i = 0; i < us.length; i++) {
 				int val = us[i];
-				int digit = val / divisor % 10;
+				int digit = val / divisor % base;
 				buckets[digit].add(us[i]);
 			}
 			int index = 0;
